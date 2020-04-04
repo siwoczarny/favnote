@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${({ color }) => color || 'hsl(49, 100%, 58%)'};
+  padding: 0;
+  background-color: ${({ theme }) => theme.primary};
   width: 220px;
   height: 48px;
   border: none;
@@ -22,3 +23,5 @@ const Button = styled.button`
 `;
 
 export default Button;
+
+//   background-color: ${({ color }) => color || 'hsl(49, 100%, 58%)'};
