@@ -18,6 +18,6 @@ export const Primary = () => {
   const defaultValue = 'hsl(49, 100%, 58%)';
   const groupId = 'GROUP-ID1';
   const value = select(label, options, defaultValue, groupId);
-  return <Button color={value}>Hello Siwoczarny</Button>;
+  return <Button color={value}>Hello World</Button>;
 };
-export const Secondary = () => <Button secondary>Hello Siwoczarny</Button>;
+export const Secondary = () => <Button secondary>Hello World</Button>;
