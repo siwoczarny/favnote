@@ -3,11 +3,11 @@ import { configure, addDecorator } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../src/theme/mainTheme';
 
-function loadStories() {
+const loaderFn = () => {
   const req = require.context('../src/components', true, /\.stories\.js$/);
-  req.keys().forEach((filename) => req(filename));
-}
+  req.keys().forEach((fname) => req(fname));
+};
 
-addDecorator((story) => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
+addDecorator((storyFn) => <ThemeProvider theme={theme}>{storyFn()}</ThemeProvider>);
 
-configure(loadStories, module);
+configure(loaderFn, module);
