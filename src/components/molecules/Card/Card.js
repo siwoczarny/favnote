@@ -1,5 +1,5 @@
 import React from 'react';
-import ProTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
@@ -64,37 +64,38 @@ const StyledLinkButton = styled.a`
   background-position: 50%;
   position: absolute;
   right: 24px;
-  top: 24px;
+  top: 50%;
   transform: translateY(-50%);
 `;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, twitterName, articleUrl, content }) => (
   <StyleWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello World</StyledHeading>
-      <DateInfo>Everyday</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src="https://avatars.io/twitter/siwoczarny" />}
-      {cardType === 'article' && (
-        <StyledLinkButton href="https://siwoczarny.github.io/portfolio/" />
-      )}
+      <StyledHeading>{title}</StyledHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === 'twitter' && <StyledAvatar src={twitterName} />}
+      {cardType === 'article' && <StyledLinkButton href={articleUrl} />}
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, minus praesentium doloribus
-        tempora inventore libero rem labore cupiditate officiis quod velit sed illum natus
-        accusantium sunt quasi maxime tenetur. Distinctio.
-      </Paragraph>
+      <Paragraph>{content}</Paragraph>
       <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyleWrapper>
 );
 
 Card.propTypes = {
-  cardType: ProTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
   cardType: 'note',
+  twitterName: null,
+  articleUrl: null,
 };
 
 export default Card;
