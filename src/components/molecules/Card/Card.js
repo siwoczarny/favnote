@@ -19,7 +19,7 @@ const StyleWrapper = styled.div`
 const InnerWrapper = styled.div`
   position: relative;
   padding: 16px 32px 8px;
-  background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
 
   :first-of-type {
     z-index: 9999;
@@ -65,7 +65,7 @@ const StyledLinkButton = styled.a`
   position: absolute;
   right: 24px;
   top: 24px;
-  transform: translateY{-50%};
+  transform: translateY(-50%);
 `;
 
 const Card = ({ cardType }) => (
