@@ -1,65 +1,71 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const twitters = [
   {
+    id: 1,
     title: 'Article 1',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'marcinkik',
     created: '2 day',
   },
   {
+    id: 2,
     title: 'Article 2',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'tsumidesho',
     created: '3 day',
   },
   {
+    id: 3,
     title: 'Article 3',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'ikropka',
     created: '6 days',
   },
   {
+    id: 4,
     title: 'Article 4',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'ovvlsome',
     created: '10 days',
   },
   {
+    id: 5,
     title: 'Article 5',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'popydo',
     created: '13 days',
   },
   {
+    id: 6,
     title: 'Article 6',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://avatars.io/twitter/siwoczarny',
+    twitterName: 'siwoczarny',
     created: '15 days',
   },
 ];
 
 const Twitters = () => (
-  <UserPageTemplate pageType="twitter">
+  <GridTemplate pageType="twitter">
     {twitters.map((item) => (
       <Card
-        key={item.key}
+        key={item.id}
         cardType="twitter"
         title={item.title}
         content={item.content}
-        twitterName={item.articleUrl}
+        twitterName={item.twitterName}
         created={item.created}
       />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 
 export default Twitters;

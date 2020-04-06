@@ -1,9 +1,10 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const articles = [
   {
+    id: 1,
     title: 'Article 1',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -11,6 +12,7 @@ const articles = [
     created: '1 day',
   },
   {
+    id: 2,
     title: 'Article 2',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -18,6 +20,7 @@ const articles = [
     created: '1 day',
   },
   {
+    id: 3,
     title: 'Article 3',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
@@ -25,33 +28,20 @@ const articles = [
     created: '3 days',
   },
   {
+    id: 4,
     title: 'Article 4',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
     articleUrl: 'https://siwoczarny.github.io/portfolio/',
     created: '4 days',
   },
-  {
-    title: 'Article 5',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '7 days',
-  },
-  {
-    title: 'Article 6',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '8 days',
-  },
 ];
 
 const Articles = () => (
-  <UserPageTemplate pageType="article">
+  <GridTemplate pageType="article">
     {articles.map((item) => (
       <Card
-        key={item.key}
+        key={item.id}
         cardType="article"
         title={item.title}
         content={item.content}
@@ -59,6 +49,6 @@ const Articles = () => (
         created={item.created}
       />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 export default Articles;
