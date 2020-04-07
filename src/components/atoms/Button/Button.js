@@ -2,9 +2,9 @@ import styled, { css } from 'styled-components';
 
 const Button = styled.button`
   padding: 0;
-  background-color: ${({ color, theme }) => color || theme.notes};
-  width: 220px;
-  height: 48px;
+  background-color: ${({ activeColor, theme }) => theme[activeColor]};
+  width: 180px;
+  height: 40px;
   border: none;
   border-radius: 50px;
   font-family: 'Montserrat', sans-serif;
