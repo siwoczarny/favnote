@@ -38,11 +38,12 @@ const articles = [
 ];
 
 const Articles = () => (
-  <GridTemplate pageType="article">
+  <GridTemplate pageType="articles">
     {articles.map((item) => (
       <Card
         key={item.id}
-        cardType="article"
+        id={item.id}
+        cardType="articles"
         title={item.title}
         content={item.content}
         articleUrl={item.articleUrl}

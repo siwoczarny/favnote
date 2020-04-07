@@ -10,7 +10,7 @@ import twitterIcon from 'assets/icons/twitter.svg';
 import logoIcon from 'assets/icons/logo.svg';
 
 const StyledWrapper = styled.nav`
-  background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.note)};
+  background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.notes)};
   width: 112px;
   height: 100vh;
   padding: 24px 0;
@@ -49,7 +49,7 @@ const Sidebar = ({ pageType }) => (
     <StyledLogoLink to="/" />
     <StyledLinksList>
       <li>
-        <ButtonIcon exact as={NavLink} to="/notes" icon={penIcon} activeclass="active" />
+        <ButtonIcon as={NavLink} to="/notes" icon={penIcon} activeclass="active" />
       </li>
       <li>
         <ButtonIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />

@@ -41,11 +41,12 @@ const notes = [
 ];
 
 const Notes = () => (
-  <GridTemplate pageType="note">
+  <GridTemplate pageType="notes">
     {notes.map((item) => (
       <Card
         key={item.id}
-        cardType="note"
+        id={item.id}
+        cardType="notes"
         title={item.title}
         content={item.content}
         articleUrl={item.articleUrl}
