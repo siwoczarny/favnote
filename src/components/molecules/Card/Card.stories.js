@@ -7,5 +7,5 @@ export default {
 };
 
 export const Note = () => <Card />;
-export const Twitter = () => <Card cardType="twitter" />;
-export const Article = () => <Card cardType="article" />;
+export const Twitter = () => <Card cardType="twitters" />;
+export const Article = () => <Card cardType="articles" />;
