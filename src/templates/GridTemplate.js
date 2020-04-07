@@ -7,7 +7,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 const StyledWrapper = styled.div`
-  padding: 25px 70px;
+  padding: 24px 64px;
 `;
 
 const StyledGrid = styled.div`
@@ -17,11 +17,11 @@ const StyledGrid = styled.div`
 `;
 
 const StyledPageHeader = styled.div`
-  margin: 25px 0 50px 0;
+  margin: 24px 0 48px 0;
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 25px 0 0 0;
+  margin: 24px 0 0 0;
   text-transform: capitalize;
 `;
 

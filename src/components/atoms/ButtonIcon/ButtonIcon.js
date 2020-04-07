@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const ButtonIcon = styled.button`
   display: block;
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 20px;
   background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;

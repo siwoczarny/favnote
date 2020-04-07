@@ -9,11 +9,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html {
-        font-size: 62.5%
+        font-size: 62.5%;
     }
 
     body {
-        padding-left: 152px;
+        padding-left: 112px;
         font-size: 1.6rem;
         font-family: 'Montserrat', sans-serif;
     }

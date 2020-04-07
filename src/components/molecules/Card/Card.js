@@ -18,7 +18,7 @@ const StyleWrapper = styled.div`
 
 const InnerWrapper = styled.div`
   position: relative;
-  padding: 16px 32px 8px;
+  padding: 16px 32px;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
 
   :first-of-type {

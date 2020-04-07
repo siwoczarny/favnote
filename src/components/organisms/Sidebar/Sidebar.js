@@ -11,7 +11,7 @@ import logoIcon from 'assets/icons/logo.svg';
 
 const StyledWrapper = styled.nav`
   background: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.note)};
-  width: 152px;
+  width: 112px;
   height: 100vh;
   padding: 24px 0;
   position: fixed;
