@@ -21,6 +21,7 @@ class DetailsPage extends Component {
         this.setState({ pageType: 'articles' });
         break;
       default:
+        // eslint-disable-next-line
         console.log('Matching path unexpected error');
     }
   }

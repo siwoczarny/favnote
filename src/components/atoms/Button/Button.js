@@ -10,7 +10,12 @@ const Button = styled.button`
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
+  color: black;
   text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   ${({ secondary }) =>
     secondary &&

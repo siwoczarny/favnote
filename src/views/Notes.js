@@ -1,46 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
-const notes = [
-  {
-    id: 1,
-    title: 'Note 1',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    created: '1 day',
-  },
-  {
-    id: 2,
-    title: 'Note 2',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    created: '2 day',
-  },
-  {
-    id: 3,
-    title: 'Note 3',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    created: '5 days',
-  },
-  {
-    id: 4,
-    title: 'Note 4',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    created: '8 days',
-  },
-  {
-    id: 5,
-    title: 'Note 5',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    created: '11 days',
-  },
-];
-
-const Notes = () => (
+const Notes = ({ notes }) => (
   <GridTemplate pageType="notes">
     {notes.map((item) => (
       <Card
@@ -56,4 +20,26 @@ const Notes = () => (
   </GridTemplate>
 );
 
-export default Notes;
+const mapStateToProps = (state) => {
+  const { notes } = state;
+  return { notes };
+};
+
+Notes.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      cardType: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      twitterName: PropTypes.string.isRequired,
+      created: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+Notes.defaultProps = {
+  notes: [],
+};
+
+export default connect(mapStateToProps)(Notes);

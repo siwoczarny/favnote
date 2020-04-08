@@ -1,43 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
-const articles = [
-  {
-    id: 1,
-    title: 'Article 1',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '1 day',
-  },
-  {
-    id: 2,
-    title: 'Article 2',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '1 day',
-  },
-  {
-    id: 3,
-    title: 'Article 3',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '3 days',
-  },
-  {
-    id: 4,
-    title: 'Article 4',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-    articleUrl: 'https://siwoczarny.github.io/portfolio/',
-    created: '4 days',
-  },
-];
-
-const Articles = () => (
+const Articles = ({ articles }) => (
   <GridTemplate pageType="articles">
     {articles.map((item) => (
       <Card
@@ -52,4 +19,27 @@ const Articles = () => (
     ))}
   </GridTemplate>
 );
-export default Articles;
+
+const mapStateToProps = (state) => {
+  const { articles } = state;
+  return { articles };
+};
+
+Articles.propTypes = {
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      cardType: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      twitterName: PropTypes.string.isRequired,
+      created: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+Articles.defaultProps = {
+  articles: [],
+};
+
+export default connect(mapStateToProps)(Articles);

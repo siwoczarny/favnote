@@ -5,6 +5,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
+import { Link } from 'react-router-dom';
 
 const StyledWrapper = styled.div`
   padding: 64px 50% 24px 64px;
@@ -42,12 +43,12 @@ const StyledImage = styled.img`
 `;
 
 const StyledLink = styled.a`
-  position: relative;
+  display: block;
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  color: black;
   text-transform: uppercase;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 24px 0 0 0;
+  margin: 20px 0 50px;
 `;
 
 const DetailsTemplate = ({ pageType, title, content, twitterName, articleUrl, created }) => (
@@ -70,7 +71,9 @@ const DetailsTemplate = ({ pageType, title, content, twitterName, articleUrl, cr
         <Paragraph>{content}</Paragraph>
         {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
       </InnerWrapper>
-      <StyledButton activeColor={pageType}>CLOSE / SAVE</StyledButton>
+      <Button as={Link} to={`/${pageType}`} activeColor={pageType}>
+        CLOSE / SAVE
+      </Button>
     </StyledWrapper>
   </UserPageTemplate>
 );
