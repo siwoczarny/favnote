@@ -9,13 +9,14 @@ const Button = styled.button`
   border-radius: 50px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: black;
   text-transform: uppercase;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
 
   ${({ secondary }) =>
     secondary &&
