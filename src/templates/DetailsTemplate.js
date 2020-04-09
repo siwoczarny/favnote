@@ -6,6 +6,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   padding: 64px 50% 24px 64px;
@@ -51,8 +52,8 @@ const StyledLink = styled.a`
   margin: 20px 0 50px;
 `;
 
-const DetailsTemplate = ({ pageType, title, content, twitterName, articleUrl, created }) => (
-  <UserPageTemplate pageType={pageType}>
+const DetailsTemplate = ({ pageContext, title, content, twitterName, articleUrl, created }) => (
+  <UserPageTemplate>
     <StyledWrapper>
       <StyledHeader>
         <InnerWrapper>
@@ -62,16 +63,16 @@ const DetailsTemplate = ({ pageType, title, content, twitterName, articleUrl, cr
           <DateInfo>created {created}</DateInfo>
         </InnerWrapper>
         <InnerWrapper>
-          {pageType === 'twitters' && (
+          {pageContext === 'twitters' && (
             <StyledImage src={`https://avatars.io/twitter/${twitterName}`} />
           )}
         </InnerWrapper>
       </StyledHeader>
       <InnerWrapper>
         <Paragraph>{content}</Paragraph>
-        {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+        {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
       </InnerWrapper>
-      <Button as={Link} to={`/${pageType}`} activeColor={pageType}>
+      <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         CLOSE / SAVE
       </Button>
     </StyledWrapper>
@@ -79,7 +80,7 @@ const DetailsTemplate = ({ pageType, title, content, twitterName, articleUrl, cr
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
+  pageContext: PropTypes.string.isRequired,
   title: PropTypes.string,
   content: PropTypes.string,
   articleUrl: PropTypes.string,
@@ -95,4 +96,4 @@ DetailsTemplate.defaultProps = {
   created: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
