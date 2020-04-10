@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const removeItem = (itemType, id) => {
   return {
     type: 'REMOVE_ITEM',
@@ -23,10 +25,20 @@ export const addItem = (itemType, itemContent) => {
   };
 };
 
-//  id: 1,
-//   title: 'Example content',
-//   content:
-//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ad voluptatibus ullam numquam nihil deserunt dolore officiis laborum, quasi iste unde? Est placeat quasi laudantium possimus debitis? Sapiente, debitis eaque.',
-//   twitterName: 'siwoczarny',
-//   articleUrl: 'https://siwoczarny.github.io/portfolio/',
-//   created: '20/02/2020',
+export const authenticateAction = (username, password) => (dispatch) => {
+  dispatch({ type: 'AUTHENTICATE_REQUEST' });
+  return axios
+    .post('http://localhost:9000/api/user/login', {
+      username,
+      password,
+    })
+    .then((payload) => {
+      console.log(payload);
+      dispatch({ type: 'AUTHENTICATE_SUCCESS', payload });
+    })
+
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: 'AUTHENTICATE_FAILURE' });
+    });
+};

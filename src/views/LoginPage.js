@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 import AuthTemplate from 'templates/AuthTemplate';
@@ -7,6 +8,8 @@ import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import { Link } from 'react-router-dom';
 import { routes } from 'routes';
+import { connect } from 'react-redux';
+import { authenticateAction } from 'actions';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -30,13 +33,13 @@ const StyledLink = styled(Link)`
   margin: 20px 0 50px;
 `;
 
-const LoginPage = () => (
+const LoginPage = ({ authenticate }) => (
   <AuthTemplate>
     <Formik
       initialValues={{ username: '', password: '' }}
       // eslint-disable-next-line no-unused-vars
       onSubmit={({ username, password }) => {
-        console.log('hello');
+        authenticate(username, password);
       }}
     >
       {({ handleChange, handleBlur, values }) => (
@@ -70,4 +73,12 @@ const LoginPage = () => (
   </AuthTemplate>
 );
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => ({
+  authenticate: (username, password) => dispatch(authenticateAction(username, password)),
+});
+
+LoginPage.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);
