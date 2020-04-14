@@ -1,24 +1,55 @@
-import React from 'react';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 import DetailsTemplate from 'templates/DetailsTemplate';
+import withContext from 'hoc/withContext';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-const example = {
-  id: 1,
-  title: 'Example content',
-  content:
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ad voluptatibus ullam numquam nihil deserunt dolore officiis laborum, quasi iste unde? Est placeat quasi laudantium possimus debitis? Sapiente, debitis eaque.',
-  twitterName: 'siwoczarny',
-  articleUrl: 'https://siwoczarny.github.io/portfolio/',
-  created: '20/02/2020',
+class DetailsPage extends Component {
+  state = {
+    activeItem: {
+      title: '',
+      content: '',
+      articleUrl: '',
+      twitterName: '',
+    },
+  };
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    axios
+      .get(`http://localhost:9000/api/note/${id}`)
+      .then(({ data }) => {
+        this.setState({ activeItem: data });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  render() {
+    const { activeItem } = this.state;
+
+    return (
+      <DetailsTemplate
+        title={activeItem.title}
+        content={activeItem.content}
+        twitterName={activeItem.twitterName}
+        articleUrl={activeItem.articleUrl}
+      />
+    );
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  if (state[ownProps.pageContext]) {
+    return {
+      activeItem: state[ownProps.pageContext].filter(
+        // eslint-disable-next-line no-underscore-dangle
+        (item) => item._id === ownProps.match.params.id,
+      ),
+    };
+  }
+  return {};
 };
 
-const DetailsPage = () => (
-  <DetailsTemplate
-    title={example.title}
-    content={example.content}
-    twitterName={example.twitterName}
-    articleUrl={example.articleUrl}
-    created={example.created}
-  />
-);
-
-export default DetailsPage;
+export default withContext(connect(mapStateToProps)(DetailsPage));

@@ -27,14 +27,6 @@ const StyledHeading = styled(Heading)`
   margin: 0;
 `;
 
-const DateInfo = styled(Paragraph)`
-  margin: 0 0 8px;
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  color: ${({ theme }) => theme.grey300};
-  text-transform: uppercase;
-`;
-
 const StyledImage = styled.img`
   width: 104px;
   height: 104px;
@@ -52,7 +44,7 @@ const StyledLink = styled.a`
   margin: 20px 0 50px;
 `;
 
-const DetailsTemplate = ({ pageContext, title, content, twitterName, articleUrl, created }) => (
+const DetailsTemplate = ({ pageContext, title, content, twitterName, articleUrl }) => (
   <UserPageTemplate>
     <StyledWrapper>
       <StyledHeader>
@@ -60,7 +52,6 @@ const DetailsTemplate = ({ pageContext, title, content, twitterName, articleUrl,
           <StyledHeading big as="h1">
             {title}
           </StyledHeading>
-          <DateInfo>created {created}</DateInfo>
         </InnerWrapper>
         <InnerWrapper>
           {pageContext === 'twitters' && (
@@ -85,7 +76,6 @@ DetailsTemplate.propTypes = {
   content: PropTypes.string,
   articleUrl: PropTypes.string,
   twitterName: PropTypes.string,
-  created: PropTypes.string,
 };
 
 DetailsTemplate.defaultProps = {
@@ -93,7 +83,6 @@ DetailsTemplate.defaultProps = {
   content: '',
   articleUrl: '',
   twitterName: '',
-  created: '',
 };
 
 export default withContext(DetailsTemplate);
