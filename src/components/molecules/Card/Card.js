@@ -38,12 +38,6 @@ const InnerWrapper = styled.div`
     `}
 `;
 
-const DateInfo = styled(Paragraph)`
-  margin: 0 0 10px;
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-`;
-
 const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
@@ -80,16 +74,7 @@ class Card extends Component {
   handleCardClick = () => this.setState({ redirect: true });
 
   render() {
-    const {
-      id,
-      pageContext,
-      title,
-      created,
-      twitterName,
-      articleUrl,
-      content,
-      removeItem,
-    } = this.props;
+    const { id, pageContext, title, twitterName, articleUrl, content, removeItem } = this.props;
     const { redirect } = this.state;
     if (redirect) {
       return <Redirect to={`${pageContext}/${id}`} />;
@@ -99,7 +84,6 @@ class Card extends Component {
       <StyleWrapper onClick={this.handleCardClick}>
         <InnerWrapper activecolor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
-          <DateInfo>{created}</DateInfo>
           {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
@@ -117,10 +101,9 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  id: PropTypes.string.isRequired,
   pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
   title: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
