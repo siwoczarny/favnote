@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
@@ -21,6 +21,11 @@ const StyledHeader = styled.div`
 
 const InnerWrapper = styled.div`
   position: relative;
+  ${({ margin }) =>
+    margin &&
+    css`
+      margin-bottom: 64px;
+    `}
 `;
 
 const StyledHeading = styled(Heading)`
@@ -59,9 +64,13 @@ const DetailsTemplate = ({ pageContext, title, content, twitterName, articleUrl 
           )}
         </InnerWrapper>
       </StyledHeader>
-      <InnerWrapper>
+      <InnerWrapper margin>
         <Paragraph>{content}</Paragraph>
-        {pageContext === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+        {pageContext === 'articles' && (
+          <StyledLink target="_blank" href={`http://${articleUrl}`}>
+            Open article
+          </StyledLink>
+        )}
       </InnerWrapper>
       <Button as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         CLOSE / SAVE

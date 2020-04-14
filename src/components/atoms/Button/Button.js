@@ -17,6 +17,7 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   outline: none;
+  cursor: pointer;
 
   ${({ secondary }) =>
     secondary &&

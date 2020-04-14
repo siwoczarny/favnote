@@ -36,6 +36,16 @@ const InnerWrapper = styled.div`
       flex-direction: column;
       justify-content: space-between;
     `}
+
+  ${({ buttons }) =>
+    buttons &&
+    css`
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    `}
 `;
 
 const StyledHeading = styled(Heading)`
@@ -82,7 +92,7 @@ class Card extends Component {
 
     return (
       <StyleWrapper>
-        <InnerWrapper onClick={this.handleCardClick} activecolor={pageContext}>
+        <InnerWrapper activecolor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
           {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
@@ -91,9 +101,14 @@ class Card extends Component {
         </InnerWrapper>
         <InnerWrapper flex>
           <Paragraph>{content}</Paragraph>
-          <Button onClick={() => removeItem(pageContext, id)} secondary>
-            REMOVE
-          </Button>
+          <InnerWrapper buttons>
+            <Button onClick={this.handleCardClick} activecolor={pageContext}>
+              Details
+            </Button>
+            <Button onClick={() => removeItem(pageContext, id)} secondary>
+              REMOVE
+            </Button>
+          </InnerWrapper>
         </InnerWrapper>
       </StyleWrapper>
     );

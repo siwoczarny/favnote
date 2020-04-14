@@ -17,6 +17,7 @@ import {
 
 const initialState = {
   userID: '5e904a2b975fd44f8caeac71',
+  isLoading: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -37,6 +38,11 @@ const rootReducer = (state = initialState, action) => {
         [action.payload.itemType]: [
           ...state[action.payload.itemType].filter((item) => item._id !== action.payload.id),
         ],
+      };
+    case FETCH_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
       };
     case FETCH_SUCCESS:
       return {

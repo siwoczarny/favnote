@@ -8,7 +8,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/icons/plus.svg';
 import NewItemBar from 'components/organisms/NewItemBar/NewItemBar';
-
+import { connect } from 'react-redux';
 import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
@@ -69,7 +69,7 @@ class GridTemplate extends Component {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>X {pageContext}</StyledParagraph>
+            <StyledParagraph>{children.length} cards</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
@@ -93,4 +93,8 @@ GridTemplate.defaultProps = {
   pageContext: 'notes',
 };
 
-export default withContext(GridTemplate);
+const mapStateToProps = ({ isLoading }) => ({
+  isLoading,
+});
+
+export default connect(mapStateToProps)(withContext(GridTemplate));
