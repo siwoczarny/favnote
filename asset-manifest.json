@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/favnote/static/js/main.78fc0fde.chunk.js",
-    "main.js.map": "/favnote/static/js/main.78fc0fde.chunk.js.map",
+    "main.js": "/favnote/static/js/main.de0eceaa.chunk.js",
+    "main.js.map": "/favnote/static/js/main.de0eceaa.chunk.js.map",
     "runtime-main.js": "/favnote/static/js/runtime-main.5ecfa962.js",
     "runtime-main.js.map": "/favnote/static/js/runtime-main.5ecfa962.js.map",
     "static/js/2.68d5d362.chunk.js": "/favnote/static/js/2.68d5d362.chunk.js",
     "static/js/2.68d5d362.chunk.js.map": "/favnote/static/js/2.68d5d362.chunk.js.map",
     "index.html": "/favnote/index.html",
-    "precache-manifest.5f16097418035353ad720f790e768547.js": "/favnote/precache-manifest.5f16097418035353ad720f790e768547.js",
+    "precache-manifest.4f2ff56e2d0d1cbb4164b0fd81ccbf0d.js": "/favnote/precache-manifest.4f2ff56e2d0d1cbb4164b0fd81ccbf0d.js",
     "service-worker.js": "/favnote/service-worker.js",
     "static/js/2.68d5d362.chunk.js.LICENSE.txt": "/favnote/static/js/2.68d5d362.chunk.js.LICENSE.txt",
     "static/media/bulb.svg": "/favnote/static/media/bulb.af737b55.svg",
@@ -22,6 +22,6 @@
   "entrypoints": [
     "static/js/runtime-main.5ecfa962.js",
     "static/js/2.68d5d362.chunk.js",
-    "static/js/main.78fc0fde.chunk.js"
+    "static/js/main.de0eceaa.chunk.js"
   ]
 }
